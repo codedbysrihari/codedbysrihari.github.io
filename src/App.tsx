@@ -200,7 +200,7 @@ function App() {
             </a>
             
             <a
-              href="https://github.com/srihari"
+              href="https://github.com/codedbysrihari"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 rounded-2xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/25"
