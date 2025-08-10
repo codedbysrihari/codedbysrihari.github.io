@@ -1,6 +1,8 @@
 // Email service for handling chatbot messages
 // This is a frontend structure - you'll need to integrate with your preferred email service
 
+import emailjs from '@emailjs/browser';
+
 interface EmailMessage {
   name: string;
   email: string;
@@ -65,14 +67,11 @@ export class EmailService {
   // EmailJS integration (client-side) - Recommended for easy setup
   async sendWithEmailJS(data: Omit<EmailMessage, 'timestamp'>): Promise<boolean> {
     try {
-      // Install EmailJS: npm install @emailjs/browser
-      // Import: import emailjs from '@emailjs/browser';
-      
       // Initialize EmailJS with your public key
-      // emailjs.init("YOUR_PUBLIC_KEY");
+      // You'll need to replace these with your actual EmailJS credentials
+      emailjs.init("YOUR_PUBLIC_KEY");
       
       // Send email to harikarthikselvam@gmail.com
-      /*
       const result = await emailjs.send(
         'YOUR_SERVICE_ID',
         'YOUR_TEMPLATE_ID',
@@ -86,9 +85,6 @@ export class EmailService {
       );
       
       console.log('Email sent successfully to harikarthikselvam@gmail.com:', result);
-      return true;
-      */
-      
       return true;
     } catch (error) {
       console.error('Error sending email with EmailJS:', error);
