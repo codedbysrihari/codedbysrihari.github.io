@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Github, Linkedin, Mail, Code, Brain, Users, Award, ExternalLink, Menu, X, MessageCircle, Send, Star, Zap, Rocket } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, Code, Brain, Users, Award, ExternalLink, Menu, X, MessageCircle, Send, Star, Zap, Rocket, Globe, Database, Cpu, Smartphone } from 'lucide-react';
+import ResumeSection from './components/ResumeSection';
+import ProjectsSection from './components/ProjectsSection';
 import EmailService from './components/EmailService';
-
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     };
 
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'skills', 'contact'];
+      const sections = ['home', 'about', 'certifications', 'experience', 'skills', 'projects', 'resume', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -110,7 +111,7 @@ function App() {
             </div>
             
             <div className="hidden md:flex items-center space-x-1">
-              {['home', 'about', 'experience', 'skills', 'contact'].map((section) => (
+              {['home', 'about', 'certifications', 'experience', 'skills', 'projects', 'resume', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -137,7 +138,7 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/20 backdrop-blur-xl border-t border-white/10">
             <div className="px-6 py-4 space-y-2">
-              {['home', 'about', 'experience', 'skills', 'contact'].map((section) => (
+              {['home', 'about', 'certifications', 'experience', 'skills', 'projects', 'resume', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -172,12 +173,28 @@ function App() {
             </h1>
             
             <div className="text-3xl md:text-4xl font-bold text-gray-300 mb-6">
-              AI/ML Developer & Tech Leader
+              Software Engineer & Full-Stack Developer
             </div>
             
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              B.Tech CSE Student at SRM University specializing in AI/ML, passionate about React development and technology education
+            <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Innovative and results-driven Software Engineer with expertise in architecting, developing, and deploying
+              high-performance cross-platform applications. Proficient in React Native, React.js, ASP.NET Core, and SQL Server.
             </p>
+            
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <div className="flex items-center px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full border border-green-500/30">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                <span className="text-green-300 text-sm font-medium">Software Engineer Intern</span>
+              </div>
+              <div className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30">
+                <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                <span className="text-blue-300 text-sm font-medium">Live Mobile App</span>
+              </div>
+              <div className="flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full border border-purple-500/30">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-2"></div>
+                <span className="text-purple-300 text-sm font-medium">200+ Active Users</span>
+              </div>
+            </div>
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 mb-16">
@@ -200,7 +217,7 @@ function App() {
             </a>
             
             <a
-              href="https://github.com/codedbysrihari"
+              href="https://codedbysrihari.github.io/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 rounded-2xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/25"
@@ -248,7 +265,11 @@ function App() {
                   <p className="text-gray-300">B.Tech Computer Science Engineering</p>
                   <p className="text-gray-300">Specialization: Artificial Intelligence & Machine Learning</p>
                   <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full">
-                    <span className="text-purple-400 font-medium">Currently in 2nd Year</span>
+                    <span className="text-purple-400 font-medium">Expected May 2028</span>
+                  </div>
+                  <div className="pt-2">
+                    <p className="text-sm text-gray-400">• High School: Velammal Vidhyashram, Dindigul (Mar 2024)</p>
+                    <p className="text-sm text-gray-400">• Relevant Courses: Data Structures, Algorithms, ML, Deep Learning</p>
                   </div>
                 </div>
               </div>
@@ -263,11 +284,18 @@ function App() {
                     <p className="text-blue-400">Innovation & Growth</p>
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  Building cutting-edge web applications with React while exploring the fascinating world of AI/ML. 
-                  My passion lies in creating user-friendly interfaces that leverage the power of artificial intelligence 
-                  to solve real-world problems and enhance user experiences.
-                </p>
+                <div className="space-y-3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Currently focused on cross-platform mobile development with React Native and full-stack solutions using ASP.NET Core. 
+                    Passionate about creating scalable applications that solve real-world problems in education and nonprofit sectors.
+                  </p>
+                  <div className="pt-2">
+                    <p className="text-sm text-gray-400">• Cross-Platform Mobile Development</p>
+                    <p className="text-sm text-gray-400">• Full-Stack Web Applications</p>
+                    <p className="text-sm text-gray-400">• AI/ML Specialization</p>
+                    <p className="text-sm text-gray-400">• Technical Mentorship</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -296,6 +324,96 @@ function App() {
         </div>
       </section>
 
+      {/* Certifications & Achievements Section */}
+      <section id="certifications" className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Certifications & Achievements
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Professional certifications and recognition for technical excellence
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="group p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-purple-500/30 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="flex items-center mb-6">
+                <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl mr-4">
+                  <Code className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Intro to Programming</h3>
+                  <p className="text-blue-400">Kaggle Certificate</p>
+                </div>
+              </div>
+              <p className="text-gray-300 mb-4">
+                Completed comprehensive programming fundamentals course covering core concepts and best practices
+              </p>
+              <div className="flex items-center text-blue-400 text-sm">
+                <span>Platform: Kaggle</span>
+              </div>
+            </div>
+            
+            <div className="group p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-purple-500/30 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="flex items-center mb-6">
+                <div className="p-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mr-4">
+                  <Brain className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Python</h3>
+                  <p className="text-green-400">Kaggle Certificate</p>
+                </div>
+              </div>
+              <p className="text-gray-300 mb-4">
+                Mastered Python programming language fundamentals and advanced concepts for data science
+              </p>
+              <div className="flex items-center text-green-400 text-sm">
+                <span>Platform: Kaggle</span>
+              </div>
+            </div>
+            
+            <div className="group p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-purple-500/30 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="flex items-center mb-6">
+                <div className="p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mr-4">
+                  <Brain className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Intro to Machine Learning</h3>
+                  <p className="text-purple-400">Kaggle Certificate</p>
+                </div>
+              </div>
+              <p className="text-gray-300 mb-4">
+                Completed comprehensive introduction to machine learning algorithms and data science principles
+              </p>
+              <div className="flex items-center text-purple-400 text-sm">
+                <span>Platform: Kaggle</span>
+              </div>
+            </div>
+            
+            <div className="group p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-purple-500/30 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="flex items-center mb-6">
+                <div className="p-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl mr-4">
+                  <Database className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Pandas</h3>
+                  <p className="text-yellow-400">Kaggle Certificate</p>
+                </div>
+              </div>
+              <p className="text-gray-300 mb-4">
+                Mastered data manipulation and analysis using Python's powerful Pandas library
+              </p>
+              <div className="flex items-center text-yellow-400 text-sm">
+                <span>Platform: Kaggle</span>
+              </div>
+            </div>
+            
+
+          </div>
+        </div>
+      </section>
+
       {/* Experience Section */}
       <section id="experience" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
@@ -304,7 +422,7 @@ function App() {
               Experience
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Leading technology initiatives and sharing knowledge through education
+              Professional experience in software engineering and technical mentorship
             </p>
           </div>
           
@@ -315,15 +433,24 @@ function App() {
                   <Users className="w-10 h-10" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white">Volunteer Educator</h3>
+                  <h3 className="text-3xl font-bold text-white">Software Engineer Intern</h3>
                   <p className="text-green-400 text-lg font-medium">Agoura Math Circle</p>
+                  <p className="text-green-300 text-sm">Dec 2024 - Present</p>
                 </div>
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Teaching Mobile App Development to students, inspiring the next generation of developers 
-                and sharing practical knowledge in modern app development technologies.
-              </p>
-              <div className="flex items-center justify-between">
+              <div className="space-y-4">
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Agoura Math Circle is a free, nonprofit STEM education initiative empowering middle and high school students with
+                  problem-solving skills, competitive exam preparation, and STEM career exposure through onsite and online programs.
+                </p>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-400">• Engineered and deployed production-grade cross-platform mobile app (Android & iOS) using React Native</p>
+                  <p className="text-sm text-gray-400">• Integrated with ASP.NET Core Web API and SQL Server, serving 200+ students</p>
+                  <p className="text-sm text-gray-400">• Reduced manual attendance and performance tracking time by 80% through backend automation</p>
+                  <p className="text-sm text-gray-400">• Designed modular UI components ensuring scalability, reusability, and maintainability</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center text-green-400 hover:text-green-300 transition-colors">
                   <ExternalLink size={18} className="mr-2" />
                   <a href="https://agouramathcircle.org" target="_blank" rel="noopener noreferrer" className="font-medium">
@@ -343,15 +470,24 @@ function App() {
                   <Zap className="w-10 h-10" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white">Technology Team Lead</h3>
-                  <p className="text-orange-400 text-lg font-medium">Agoura Math Circle</p>
+                  <h3 className="text-3xl font-bold text-white">Technical Mentor</h3>
+                  <p className="text-orange-400 text-lg font-medium">Global Volunteer</p>
+                  <p className="text-orange-300 text-sm">Ongoing</p>
                 </div>
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Leading the technology team, overseeing technical projects and implementing innovative 
-                solutions for educational programs and organizational growth.
-              </p>
-              <div className="flex items-center justify-between">
+              <div className="space-y-4">
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Delivering global training sessions on React Native full-stack development, focusing on UI/UX design 
+                  principles, API integration workflows, and deployment strategies.
+                </p>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-400">• Delivered global training sessions on React Native full-stack development</p>
+                  <p className="text-sm text-gray-400">• Focused on UI/UX design principles, API integration workflows, and deployment strategies</p>
+                  <p className="text-sm text-gray-400">• Mentored developers in mobile-first architecture and advanced state management</p>
+                  <p className="text-sm text-gray-400">• Performance optimization for scalable applications</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center text-orange-400 hover:text-orange-300 transition-colors">
                   <ExternalLink size={18} className="mr-2" />
                   <a href="https://agouramathcircle.org" target="_blank" rel="noopener noreferrer" className="font-medium">
@@ -376,11 +512,11 @@ function App() {
               Skills & Technologies
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Expertise across modern web development and emerging AI/ML technologies
+              Comprehensive skills in cross-platform development, backend systems, and modern technologies
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="group p-10 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10">
               <div className="text-center mb-8">
                 <div className="inline-flex p-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl mb-6">
@@ -391,8 +527,11 @@ function App() {
               <div className="space-y-6">
                 {[
                   { skill: 'React.js', level: 90 },
-                  { skill: 'JavaScript/TypeScript', level: 85 },
-                  { skill: 'HTML/CSS', level: 95 }
+                  { skill: 'React Native', level: 85 },
+                  { skill: 'TypeScript', level: 80 },
+                  { skill: 'Tailwind CSS', level: 95 },
+                  { skill: 'JavaScript (ES6+)', level: 90 },
+                  { skill: 'HTML5/CSS3', level: 95 }
                 ].map((item, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex justify-between">
@@ -415,13 +554,16 @@ function App() {
                 <div className="inline-flex p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl mb-6">
                   <Brain size={48} />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-4">AI/ML</h3>
+                <h3 className="text-3xl font-bold text-white mb-4">AI/ML & Data Science</h3>
               </div>
               <div className="space-y-6">
                 {[
-                  { skill: 'Python', level: 80 },
-                  { skill: 'Machine Learning', level: 75 },
-                  { skill: 'Data Science', level: 70 }
+                  { skill: 'Python', level: 85 },
+                  { skill: 'Java', level: 80 },
+                  { skill: 'C', level: 75 },
+                  { skill: 'MATLAB', level: 70 },
+                  { skill: 'C#', level: 80 },
+                  { skill: 'AI/ML Specialization', level: 85 }
                 ].map((item, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex justify-between">
@@ -439,18 +581,85 @@ function App() {
               </div>
             </div>
             
+            <div className="group p-10 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-orange-500/30 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/10">
+              <div className="text-center mb-8">
+                <div className="inline-flex p-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-3xl mb-6">
+                  <Database size={48} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-4">Backend Development</h3>
+              </div>
+              <div className="space-y-6">
+                {[
+                  { skill: 'ASP.NET Core', level: 85 },
+                  { skill: 'SQL Server', level: 80 },
+                  { skill: 'MongoDB', level: 70 },
+                  { skill: 'Oracle', level: 65 },
+                  { skill: 'REST APIs', level: 85 },
+                  { skill: 'Node.js', level: 75 }
+                ].map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-300 font-medium">{item.skill}</span>
+                      <span className="text-orange-400 font-bold">{item.level}%</span>
+                    </div>
+                    <div className="w-full bg-gray-700/50 rounded-full h-3">
+                      <div 
+                        className="bg-gradient-to-r from-orange-500 to-red-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${item.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="group p-10 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-indigo-500/30 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/10">
+              <div className="text-center mb-8">
+                <div className="inline-flex p-6 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-3xl mb-6">
+                  <Smartphone size={48} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-4">Mobile Development</h3>
+              </div>
+              <div className="space-y-6">
+                {[
+                  { skill: 'React Native', level: 90 },
+                  { skill: 'Cross-platform', level: 85 },
+                  { skill: 'Mobile UI/UX', level: 80 },
+                  { skill: 'App Store Deployment', level: 75 },
+                  { skill: 'Mobile Testing', level: 75 },
+                  { skill: 'Real-time Sync', level: 85 }
+                ].map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-300 font-medium">{item.skill}</span>
+                      <span className="text-indigo-400 font-bold">{item.level}%</span>
+                    </div>
+                    <div className="w-full bg-gray-700/50 rounded-full h-3">
+                      <div 
+                        className="bg-gradient-to-r from-indigo-500 to-blue-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${item.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
             <div className="group p-10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-3xl backdrop-blur-sm border border-white/10 hover:border-green-500/30 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/10">
               <div className="text-center mb-8">
                 <div className="inline-flex p-6 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl mb-6">
                   <Users size={48} />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-4">Leadership</h3>
+                <h3 className="text-3xl font-bold text-white mb-4">Leadership & Tools</h3>
               </div>
               <div className="space-y-6">
                 {[
-                  { skill: 'Team Leadership', level: 85 },
-                  { skill: 'Teaching', level: 90 },
-                  { skill: 'Project Management', level: 80 }
+                  { skill: 'Technical Mentorship', level: 90 },
+                  { skill: 'Project Management', level: 85 },
+                  { skill: 'Product Architecture', level: 80 },
+                  { skill: 'Git & GitHub', level: 90 },
+                  { skill: 'Docker', level: 75 },
+                  { skill: 'Prompt Engineering', level: 80 }
                 ].map((item, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex justify-between">
@@ -470,6 +679,12 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Projects Section */}
+      <ProjectsSection />
+
+      {/* Resume Section */}
+      <ResumeSection />
 
       {/* Contact Section */}
       <section id="contact" className="py-32 relative">
