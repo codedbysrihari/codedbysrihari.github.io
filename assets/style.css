@@ -1,0 +1,186 @@
+/* ============================================================
+   Srihari K — 3D Minimalist Portfolio
+   ============================================================ */
+
+:root {
+  --bg-color: #030305;
+  --text-main: #ffffff;
+  --text-muted: #888899;
+  --text-dim: #555566;
+  --accent: #00f0ff;
+  --accent-glow: rgba(0, 240, 255, 0.4);
+  
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --container: 1100px;
+  --pad: clamp(24px, 5vw, 60px);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; width: 100%; min-height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 400;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; font-weight: 700; }
+p { margin: 0; line-height: 1.6; }
+
+/* --- 3D CANVAS & OVERLAY --- */
+#bg-canvas {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+}
+
+#ui-layer { position: relative; z-index: 10; width: 100%; }
+
+/* --- NAVIGATION --- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 24px var(--pad);
+  display: flex; justify-content: space-between; align-items: center;
+  mix-blend-mode: difference;
+  z-index: 100;
+}
+.nav__mark { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -1px; }
+.nav__links { display: flex; gap: 32px; }
+.nav__links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; position: relative; }
+.nav__links a::after {
+  content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: var(--text-main);
+  transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease;
+}
+.nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav__cta { border: 1px solid var(--text-main); padding: 8px 24px; border-radius: 4px; font-size: 14px; transition: 0.3s; }
+.nav__cta:hover { background: var(--text-main); color: var(--bg-color); }
+
+@media (max-width: 768px) {
+  .nav__links, .nav__cta { display: none; }
+}
+
+/* --- MAIN LAYOUT --- */
+main { max-width: var(--container); margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+
+/* --- HERO --- */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-bottom: 10vh; }
+.hero__content { max-width: 800px; }
+.eyebrow { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 24px; }
+.title { font-size: clamp(60px, 10vw, 130px); letter-spacing: -0.04em; line-height: 1; margin-bottom: 32px; }
+.subtitle { font-size: clamp(24px, 4vw, 36px); font-family: var(--font-display); font-weight: 500; margin-bottom: 24px; }
+.desc { font-size: 18px; color: var(--text-muted); max-width: 600px; margin-bottom: 48px; }
+.actions { display: flex; gap: 20px; }
+.btn { padding: 16px 40px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: 0.3s; border-radius: 2px; }
+.btn-primary { background: var(--accent); color: var(--bg-color); }
+.btn-primary:hover { box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-2px); }
+.btn-outline { border: 1px solid var(--text-muted); color: var(--text-main); }
+.btn-outline:hover { border-color: var(--text-main); }
+
+/* --- ABOUT --- */
+.section-title { font-size: clamp(40px, 6vw, 64px); margin-bottom: 80px; letter-spacing: -2px; }
+.about-grid { display: grid; grid-template-columns: 1fr 300px; gap: 80px; }
+.about-text p { font-size: 18px; color: var(--text-muted); margin-bottom: 24px; }
+.about-text .lead { font-size: 24px; color: var(--text-main); font-family: var(--font-display); margin-bottom: 32px; }
+.about-stats { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 32px; display: flex; flex-direction: column; gap: 32px; }
+.stat-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 8px; }
+.stat-item strong { font-size: 18px; font-family: var(--font-display); }
+
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } .about-stats { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; flex-direction: row; flex-wrap: wrap; } }
+
+/* --- EXPERIENCE (WORK) --- */
+.timeline { display: flex; flex-direction: column; gap: 64px; }
+.timeline-item { display: grid; grid-template-columns: 250px 1fr; gap: 48px; }
+.timeline-meta .date { display: block; font-family: var(--font-display); font-size: 18px; color: var(--accent); margin-bottom: 8px; }
+.timeline-meta .tag { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); }
+.timeline-content h3 { font-size: 28px; margin-bottom: 16px; }
+.timeline-content .company { color: var(--text-muted); font-weight: 400; }
+.timeline-content p { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; }
+.timeline-content ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.timeline-content li { position: relative; padding-left: 20px; color: var(--text-muted); font-size: 15px; }
+.timeline-content li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+@media (max-width: 768px) { .timeline-item { grid-template-columns: 1fr; gap: 24px; } }
+
+/* --- PROJECTS --- */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
+.project-card { 
+  display: block; padding: 48px 40px; 
+  background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s ease;
+}
+.project-card:hover { 
+  background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.15);
+  transform: translateY(-8px);
+}
+.project-content h3 { font-size: 24px; margin-bottom: 16px; }
+.project-content p { color: var(--text-muted); font-size: 15px; margin-bottom: 32px; min-height: 80px; }
+.tech-stack { display: flex; gap: 12px; flex-wrap: wrap; }
+.tech-stack span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); border-bottom: 1px solid rgba(0, 240, 255, 0.3); padding-bottom: 2px; }
+
+/* --- SKILLS --- */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
+.skill-group h4 { font-size: 20px; color: var(--accent); margin-bottom: 16px; font-weight: 500; }
+.skill-group p { font-size: 16px; color: var(--text-muted); line-height: 1.8; }
+
+/* --- CONTACT --- */
+.contact-box { text-align: center; padding: 80px 0; }
+.contact-title { font-size: clamp(48px, 8vw, 100px); letter-spacing: -2px; margin-bottom: 24px; }
+.contact-sub { font-size: 20px; color: var(--text-muted); margin-bottom: 64px; }
+.contact-links { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.contact-links a { font-family: var(--font-display); font-size: 24px; font-weight: 600; position: relative; }
+.contact-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -8px; width: 100%; height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease;
+}
+.contact-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* --- CONTACT FORM --- */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+  text-align: left;
+}
+.form-group {
+  margin-bottom: 24px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 24px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.btn-submit {
+  width: 100%;
+  margin-top: 8px;
+}
+.form-result {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  min-height: 20px;
+}
+.text-success { color: #4ade80; }
+.text-error { color: #f87171; }
+
+/* --- FOOTER --- */
+footer { text-align: center; padding: 40px var(--pad); border-top: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: var(--text-dim); }
+
+/* --- GSAP REVEAL CLASS --- */
+.gs-reveal { opacity: 0; visibility: hidden; }

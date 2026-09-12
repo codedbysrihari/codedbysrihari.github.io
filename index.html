@@ -1,17 +1,234 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>srihari.k | v4</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-Rjm_mS-y.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-W3RdP2Ea.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Srihari K - Portfolio</title>
+  <meta name="description" content="Srihari K is a full-stack engineer building AI-powered products — travel-guidance AI at Romaly, cross-platform React Native and .NET platforms for Agoura Math Circle, and reinforcement learning systems.">
+  <meta name="theme-color" content="#030305">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css?v=2">
+</head>
+<body>
+
+  <!-- Background 3D Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Foreground UI Overlay -->
+  <div id="ui-layer">
+    
+    <header class="nav" id="nav">
+
+      <nav class="nav__links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav__cta" href="Srihari_Resume.pdf" target="_blank">Résumé</a>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero__content gs-reveal">
+          <p class="eyebrow">Chennai, India — Open to new-grad roles</p>
+          <h1 class="title">Srihari K</h1>
+          <p class="subtitle">Building software that <em>learns</em> from the people using it.</p>
+          <p class="desc">Full-stack engineer across React Native, .NET Core and applied ML. Shipping travel-guidance AI at Romaly and STEM platforms at Agoura Math Circle.</p>
+          <div class="actions">
+            <a href="#projects" class="btn btn-primary">See the work</a>
+            <a href="mailto:sk6704@srmist.edu.in" class="btn btn-outline">Get in touch</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <h2 class="section-title gs-reveal">Background</h2>
+        <div class="about-grid gs-reveal">
+          <div class="about-text">
+            <p class="lead">I'm a computer science undergraduate at SRM specialising in AI and machine learning, building production software alongside my degree.</p>
+            <p>Most of my work sits at the seam where a model meets a real interface — recommendation pipelines behind a travel app, at-risk-student detection behind an advising platform, a React Native app that a few hundred students open every week. I love the API contracts, the data models, and the deployment pipelines that have to hold once the demo is over.</p>
+            <p>I also teach. As a volunteer mentor with Agoura Math Circle I run global sessions on React Native full-stack development.</p>
+            <p>I am also highly interested in and currently exploring the field of quantum computers.</p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item"><span>Based</span><strong>Chennai, India</strong></div>
+            <div class="stat-item"><span>Focus</span><strong>Full-stack + Applied ML</strong></div>
+            <div class="stat-item"><span>Graduating</span><strong>May 2028</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section class="section" id="work">
+        <h2 class="section-title gs-reveal">Experience</h2>
+        <div class="timeline">
+          
+          <div class="timeline-item gs-reveal">
+            <div class="timeline-meta">
+              <span class="date">Jan 2025 — Present</span>
+              <span class="tag">Startup</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Software Developer <span class="company">@ Romaly</span></h3>
+              <p>Building scalable full-stack features for a travel-guidance AI product, improving performance and real-time usability.</p>
+              <ul>
+                <li>Developed modular UI components and REST APIs for ML recommendations.</li>
+                <li>Worked with the ML team to integrate inference pipelines.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item gs-reveal">
+            <div class="timeline-meta">
+              <span class="date">Dec 2024 — Present</span>
+              <span class="tag">Nonprofit</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Software Engineer <span class="company">@ Agoura Math Circle</span></h3>
+              <p>Architected and shipped the cross-platform mobile and web stack for a free STEM initiative.</p>
+              <ul>
+                <li>Deployed a React Native app with .NET Core Web API and SQL Server.</li>
+                <li>Implemented secure auth, enrollment and academic tracking end to end.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item gs-reveal">
+            <div class="timeline-meta">
+              <span class="date">Aug 2024 — Present</span>
+              <span class="tag">Education</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Instructor / Mentor <span class="company">@ Agoura Math Circle</span></h3>
+              <p>Teaching technical courses to students as part of a global STEM initiative.</p>
+              <ul>
+                <li><strong>Introduction to AI:</strong> Lead instructor for the Fall 2026 semester.</li>
+                <li><strong>Mobile App Development:</strong> Taught React Native development for two semesters (Fall 2024 and Spring 2025).</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" id="projects">
+        <h2 class="section-title gs-reveal">Selected Work</h2>
+        <div class="projects-grid">
+          
+          <a href="https://github.com/codedbysrihari/rl-snake-agent" target="_blank" class="project-card gs-reveal">
+            <div class="project-content">
+              <h3>PPO Snake Agent</h3>
+              <p>A reinforcement learning agent that teaches itself Snake through curriculum learning, streamed live into an interactive React dashboard.</p>
+              <div class="tech-stack"><span>PPO</span><span>WebSockets</span><span>React</span></div>
+            </div>
+          </a>
+
+          <div class="project-card gs-reveal">
+            <div class="project-content">
+              <h3>AI Academic Recommendation System</h3>
+              <p>An advising platform that flags at-risk students early and returns personalised recommendations from machine learning models.</p>
+              <div class="tech-stack"><span>Python</span><span>ML pipelines</span><span>DevOps</span></div>
+            </div>
+          </div>
+
+          <div class="project-card gs-reveal">
+            <div class="project-content">
+              <h3>Romaly — Travel Guidance AI</h3>
+              <p>Full-stack product work on an AI travel companion: modular UI, REST APIs, model deployment and inference pipelines.</p>
+              <div class="tech-stack"><span>React</span><span>Inference</span></div>
+            </div>
+          </div>
+
+          <a href="https://agouramathcircle.org/" target="_blank" class="project-card gs-reveal">
+            <div class="project-content">
+              <h3>Agoura Math Circle Platform</h3>
+              <p>iOS and Android app plus a companion React web platform for registration, attendance and scheduling, sharing one .NET Core backend.</p>
+              <div class="tech-stack"><span>React Native</span><span>.NET Core</span><span>SQL</span></div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="section" id="skills">
+        <h2 class="section-title gs-reveal">Capabilities</h2>
+        <div class="skills-grid gs-reveal">
+          <div class="skill-group">
+            <h4>Core</h4>
+            <p>Python, React.js, React Native, .NET Core, SQL Server</p>
+          </div>
+          <div class="skill-group">
+            <h4>Backend</h4>
+            <p>REST API, Authentication, Data modelling, Server-side logic</p>
+          </div>
+          <div class="skill-group">
+            <h4>Machine Learning</h4>
+            <p>Artificial Intelligence, Neural Networks, Model deployment, Inference pipelines, RL</p>
+          </div>
+          <div class="skill-group">
+            <h4>Tools & Practice</h4>
+            <p>Docker, GitHub, Figma, System Design</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="contact-box gs-reveal">
+          <h2 class="contact-title">Let's build something.</h2>
+          <p class="contact-sub">Open for new-grad roles and interesting opportunities.</p>
+          
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/harikarthikselvam@gmail.com" method="POST">
+            <input type="hidden" name="_autoresponse" value="Thank you for reaching out! We will reply within 24 hours.">
+            <input type="hidden" name="_subject" value="New message from portfolio!">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div id="formInputs">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+            </div>
+            
+            <p id="formResult" class="form-result" style="display: none;"></p>
+          </form>
+
+          <div class="contact-links" style="margin-top: 2rem;">
+            <a href="mailto:sk6704@srmist.edu.in">sk6704@srmist.edu.in</a>
+            <a href="https://www.linkedin.com/in/srihari-k-8275852a2/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/codedbysrihari" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>&copy; Srihari K. Designed with Three.js & GSAP.</p>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/main.js?v=2"></script>
+</body>
 </html>
