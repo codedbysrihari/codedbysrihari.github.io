@@ -1,0 +1,78 @@
+{
+  "umbra-letterpress": {
+    "title": "Umbra Letterpress",
+    "stage": "Paper-stage concept · Computer vision · Inverse design",
+    "summary": "Could a folded postcard cast the shadow of a house key? A vision model would work backwards from a silhouette and the angle of sunlight to suggest a paper cutout and fold.",
+    "sections": [
+      {
+        "heading": "A shadow sent between cities",
+        "text": "Someone in Chennai traces the shadow of a key. A friend in Lisbon wants the same outline to appear on their desk. The drawing defines the target, while the desk orientation and the sun angle at the chosen hour constrain which folds could work."
+      },
+      {
+        "heading": "Learning to design a fold",
+        "text": "The training examples would come from a shadow renderer. Each example would pair a known cutout and fold with its shadow at a sampled sun angle. Given a target silhouette and angle, a conditional generative model would propose several patterns. The renderer would project each candidate back onto the desk so the sender could preview the closest match."
+      },
+      {
+        "heading": "Would a learned proposal beat a search?",
+        "text": "Hold out entire shape families, including keys, during training. Give the model and a direct geometric search the same number of rendered candidates per target. Compare the best shadow overlap, then cut and fold a sample from each method and photograph the results. A missing key tooth would expose a failure that a high overall overlap could hide."
+      }
+    ]
+  },
+  "evidence-expiry": {
+    "title": "Evidence Expiry",
+    "stage": "Paper-stage concept · Decision support",
+    "summary": "A proposed travel planner that remembers which facts each part of an itinerary depends on.",
+    "sections": [
+      {
+        "heading": "A ferry moves, lunch stays",
+        "text": "A traveller plans breakfast by the harbour, a ferry crossing and a museum visit on the far bank. When the ferry changes its timetable, the planner would flag the crossing and museum slot while keeping the independent breakfast booking."
+      },
+      {
+        "heading": "How a repair would work",
+        "text": "Attach each booking to the facts it needs, such as a departure time or opening hour. When a fact changes, follow those links, check the affected time windows and offer the smallest feasible set of edits. Show the changed fact alongside each suggested edit."
+      },
+      {
+        "heading": "First experiment",
+        "text": "Build a small set of fictional itineraries with timetable changes and closures. Compare local repairs with rebuilding the whole itinerary. Check every revised plan for missed connections and count how many unaffected bookings each approach moves."
+      }
+    ]
+  },
+  "sync-witness": {
+    "title": "Sync Witness",
+    "stage": "Paper-stage concept · Local-first software",
+    "summary": "A proposed offline editor that shows why two individually valid edits collide when devices reconnect.",
+    "sections": [
+      {
+        "heading": "Two edits to a class schedule",
+        "text": "One organiser moves a workshop to Tuesday while offline. Another books its room for a different workshop that day. Both calendars look valid until they reconnect. An unrelated spelling fix to the workshop title can still go through."
+      },
+      {
+        "heading": "What a witness would show",
+        "text": "Replay the relevant edits from the last shared calendar and highlight the room and time they both need. Give the organiser a choice of room or day, then apply that choice alongside the compatible edits."
+      },
+      {
+        "heading": "First experiment",
+        "text": "Generate pairs of offline edits to a small room calendar, including harmless overlaps and real double bookings. Check that every reported conflict can be replayed from the shared state and that resolving it preserves independent changes."
+      }
+    ]
+  },
+  "misprint-orchard": {
+    "title": "Misprint Orchard",
+    "stage": "Paper-stage concept · Probabilistic ML · Active learning",
+    "summary": "When two mistakes produce the same answer, what should a tutor ask next? A probabilistic model would choose a one-symbol edit that helps distinguish the learner’s possible reasoning.",
+    "sections": [
+      {
+        "heading": "One answer, two explanations",
+        "text": "A student writes 3² = 6. They might always double the base, or they might multiply the base by the exponent. Both rules produce six. On 3³ the first predicts six and the second predicts nine. The teacher could ask the student to explain that next answer."
+      },
+      {
+        "heading": "Learning which question to ask",
+        "text": "A Bayesian model would learn how often each candidate rule leads to a given response from worked examples labelled by reasoning strategy. After an answer, it would update the probabilities of the competing rules. It would score one-symbol edits by how much their possible answers are expected to reduce uncertainty, including the possibility of an arithmetic slip."
+      },
+      {
+        "heading": "Does the extra question help?",
+        "text": "Start with simulated learners whose rules are known, varying how often they slip. Reserve some exponent expressions for testing. Give each learner one follow-up from the model and, in a separate replay, one randomly chosen edit. Compare how often each method identifies the rule and how often it confidently selects the wrong one. A later classroom study would need student explanations to check whether these simulated strategies capture real reasoning."
+      }
+    ]
+  }
+}
