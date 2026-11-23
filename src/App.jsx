@@ -1,10 +1,26 @@
 import Navigation from './components/Navigation.jsx';
-import FeaturedProjects from './components/FeaturedProjects.jsx';
+import Hero from './components/Hero.jsx';
+import { useEffect } from 'react';
 import Projects from './components/Projects.jsx';
 import Research from './components/Research.jsx';
 import Contact from './components/Contact.jsx';
 
 export default function App() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      for (const { target, isIntersecting } of entries) {
+        if (isIntersecting) {
+          target.classList.add('in-view');
+          observer.unobserve(target);
+        }
+      }
+    }, { rootMargin: '0px 0px 36px 0px' });
+    document.querySelectorAll('.section-heading, .timeline-item, .skill-group, .notes-intro, .about-grid').forEach(item => {
+      item.classList.add('scroll-reveal');
+      observer.observe(item);
+    });
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -14,24 +30,12 @@ export default function App() {
         <Navigation />
 
         <main id="main">
-          <section className="hero" id="home">
-            <div className="hero__content">
-              <p className="eyebrow"><span className="availability-dot"></span> Open to new-grad roles</p>
-              <p className="hero-intro">Hi, I'm Srihari K.</p>
-              <h1>Engineering<br />the <span className="accent-text">intelligent</span><br />everyday.</h1>
-              <p className="desc">Full-stack engineer turning applied AI into products people use. From learning systems to thoughtful, human interfaces.</p>
-              <div className="actions">
-                <a href="#projects" className="btn btn-primary">Explore my work</a>
-                <a href="#contact" className="btn btn-outline">Let's talk</a>
-              </div>
-              <div className="hero-location"><span>Based in Chennai, India</span><span>Building across the stack</span></div>
-            </div>
-            <FeaturedProjects />
-          </section>
-          <div className="stack-strip" aria-label="Primary technologies"><span>MY TOOLKIT</span><span>React / Native</span><span>.NET Core</span><span>Python</span><span>Machine Learning</span><span>SQL Server</span></div>
+          <Hero />
+          <Projects />
+          <Research />
 
           <section className="section" id="about">
-            <div className="section-heading"><p className="eyebrow">THE PERSON BEHIND THE CODE</p><h2 className="section-title">Curious by nature.<br />Engineer by practice.</h2></div>
+            <div className="section-heading"><h2 className="section-title">About me</h2></div>
             <div className="about-grid">
               <div className="about-text">
                 <p className="lead">I'm a computer science undergraduate at SRM specialising in AI and machine learning, building production software alongside my degree.</p>
@@ -43,12 +47,13 @@ export default function App() {
                 <div className="stat-item"><span>Based</span><strong>Chennai, India</strong></div>
                 <div className="stat-item"><span>Focus</span><strong>Full-stack + Applied ML</strong></div>
                 <div className="stat-item"><span>Graduating</span><strong>May 2028</strong></div>
+                <div className="stat-item"><span>Motto</span><strong>NOTHING IS IMPOSSIBLE</strong></div>
               </div>
             </div>
           </section>
 
           <section className="section" id="work">
-            <div className="section-heading"><p className="eyebrow">WHERE I BUILD</p><h2 className="section-title">Ideas into production.</h2></div>
+            <div className="section-heading"><h2 className="section-title">Where I work</h2></div>
             <div className="timeline">
 
               <div className="timeline-item">
@@ -99,12 +104,8 @@ export default function App() {
             </div>
           </section>
 
-          <Projects />
-
-          <Research />
-
           <section className="section" id="skills">
-            <div className="section-heading"><p className="eyebrow">FROM INTERFACE TO INFERENCE</p><h2 className="section-title">A connected skill set.</h2></div>
+            <div className="section-heading"><h2 className="section-title">Tools I use</h2></div>
             <div className="skills-grid">
               <div className="skill-group">
                 <h4>Core</h4>
@@ -130,7 +131,7 @@ export default function App() {
         </main>
 
         <footer>
-          <p>&copy; Srihari K <span>Built with curiosity. Chennai, India.</span></p>
+          <div className="shell footer-row"><span className="footer-brand">Srihari K.</span><span>Chennai, India</span><a href="#home">Back to top</a></div>
         </footer>
 
       </div>

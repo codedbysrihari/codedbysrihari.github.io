@@ -1,12 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import briefs from './briefs.json';
 import '../assets/style.css';
-import '../assets/concepts.css';
 
 function ConceptBrief({ brief }) {
   return (
     <main className="concept-brief">
-      <a className="text-link" href="../index.html#projects">Back to projects</a>
+      <a className="text-link" href="../index.html#project-archive">Back to projects</a>
       <article>
         <header>
           <p className="concept-stage">{brief.stage}</p>

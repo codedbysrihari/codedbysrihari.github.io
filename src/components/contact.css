@@ -1,0 +1,56 @@
+.contact-intro, .contact-form, .contact-receipt { min-width: 0; }
+.contact-links a, .receipt-address, .contact-receipt h3 { overflow-wrap: anywhere; }
+.contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.contact-form { position: relative; }
+.dispatch-underlay { visibility: hidden; }
+.contact-dispatch {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center;
+  gap: 24px; padding: 32px 16px; border: 1px dashed #78796a; border-radius: 4px;
+  color: var(--paper); font: 1.35rem/1.2 var(--hand);
+}
+.dispatch-envelope {
+  position: relative; width: 116px; height: 72px; margin-top: 22px;
+  border-radius: 3px; background: #a69b7d; box-shadow: 0 4px 0 #12151055;
+  animation: envelope-settle 1.15s ease-out both;
+}
+.dispatch-letter {
+  position: absolute; inset: 4px 9px; padding: 12px; border-radius: 2px;
+  background: #f9f5e7 url('/art/grain.png'); animation: post-letter .72s ease-in-out both;
+}
+.dispatch-letter i { display: block; width: 86%; height: 2px; margin-bottom: 5px; background: #979c85; }
+.dispatch-letter i:last-child { width: 46%; }
+.dispatch-pocket, .dispatch-flap { position: absolute; inset: 0; }
+.dispatch-pocket {
+  border-radius: inherit; background: #dcd3b6 url('/art/grain.png');
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+}
+.dispatch-flap {
+  height: 63%; background: #eee7d1 url('/art/grain.png'); transform-origin: top center;
+  clip-path: polygon(0 0, 100% 0, 50% 100%); animation: seal-envelope .36s .68s ease-out both;
+}
+@keyframes post-letter {
+  0%, 12% { transform: translateY(-34px) rotate(-5deg); }
+  100% { transform: translateY(0); }
+}
+@keyframes seal-envelope { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes envelope-settle { 0%, 78% { transform: rotate(-4deg); } 100% { transform: rotate(0); } }
+.contact-receipt {
+  background: #eee8d3 url('/art/grain.png'); color: #2d3028; padding: clamp(22px,4vw,42px);
+  border-radius: 4px 6px 5px 3px; border: 1px solid #e3d9ba; box-shadow: 0 5px 0 #aaa58e;
+  animation: receipt-arrive .32s ease-out;
+}
+.receipt-meta, .receipt-footer { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
+.receipt-meta { color: #565d4c; font-size: .79rem; border-bottom: 1px dashed #a09f86; padding-bottom: 12px; }
+.receipt-meta span:last-child { font: .73rem ui-monospace,monospace; }
+.contact-receipt h3 { margin: 22px 0 10px; font: 400 clamp(1.8rem,3.1vw,2.8rem)/1.13 var(--serif); letter-spacing: -.055em; }
+.contact-receipt h3:focus-visible { outline-color: #495643; }
+.receipt-address { margin-top: 8px; font-size: .92rem; }
+.receipt-signature { font: 1.85rem/1.15 var(--hand); margin: 20px 0; color: #44513c; }
+.receipt-footer { padding-top: 12px; border-top: 1px dashed #a09f86; color: #505743; font-size: .79rem; }
+.receipt-footer span { text-transform: uppercase; letter-spacing: .07em; }
+.receipt-footer button { color: #333e30; background: none; border: 0; padding: 5px 0; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.receipt-footer button:focus-visible { outline-color: #495643; }
+@keyframes receipt-arrive { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  .contact-receipt, .dispatch-envelope, .dispatch-letter, .dispatch-flap { animation: none; }
+}
