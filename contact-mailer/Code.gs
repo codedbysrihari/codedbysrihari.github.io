@@ -97,6 +97,7 @@ function deliver_(note) {
 
 function doPost(event) {
   const p = event && event.parameter || {};
+  if (p.event === 'view') return recordVisit_(p);
   const note = {id:String(p.id || ''), email:String(p.email || '').trim(), name:String(p.name || '').trim(), message:String(p.message || '').trim()};
   if (p.website || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(note.id) ||
       !note.name || note.name.length > 100 || /[\r\n]/.test(note.name) || !note.message || note.message.length > 4000 ||
@@ -106,4 +107,59 @@ function doPost(event) {
   try { return json_(deliver_(note)); }
   catch (_) { return json_({status:'unavailable'}); }
   finally { lock.releaseLock(); }
+}
+
+function reportingDay_(ms) {
+  return new Date(ms + 19800000).toISOString().slice(0,10);
+}
+
+function recordVisit_(p) {
+  if (!/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(p.browser || '')) return json_({status:'invalid'});
+  const country = /^[A-Z]{2}$/.test(p.country) ? p.country : 'Unknown';
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) return json_({status:'busy'});
+  try {
+    const store = PropertiesService.getScriptProperties();
+    const day = reportingDay_(Date.now());
+    const key = 'traffic.' + day;
+    const stats = JSON.parse(store.getProperty(key) || '{"views":0,"browsers":0,"countries":{}}');
+    const hash = digest_(day + p.browser);
+    const shardKey = key + '.' + hash.slice(0,2);
+    const signature = hash.slice(2,16) + '|';
+    const shard = store.getProperty(shardKey) || '';
+    const changes = {};
+    if (!shard.includes(signature)) {
+      changes[shardKey] = shard + signature;
+      stats.browsers++;
+      stats.countries[country] = (stats.countries[country] || 0) + 1;
+    }
+    stats.views++;
+    changes[key] = JSON.stringify(stats);
+    if (!store.getProperty('nextTrafficReport')) changes.nextTrafficReport = day;
+    store.setProperties(changes);
+    return json_({status:'counted'});
+  } finally { lock.releaseLock(); }
+}
+
+// Run hourly. The first execution after midnight reports the entire previous IST day.
+function sendDailyTrafficReport() {
+  const store = PropertiesService.getScriptProperties();
+  const lock = LockService.getScriptLock();
+  lock.waitLock(15000);
+  try {
+    const today = reportingDay_(Date.now());
+    const day = store.getProperty('nextTrafficReport');
+    if (!day) { store.setProperty('nextTrafficReport', today); return; }
+    if (day >= today) return;
+    const key = 'traffic.' + day;
+    const stats = JSON.parse(store.getProperty(key) || '{"views":0,"browsers":0,"countries":{}}');
+    const breakdown = Object.entries(stats.countries).sort((a,b) => b[1]-a[1]).map(([code,count]) => code + ' — ' + count);
+    MailApp.sendEmail({to:INBOX, subject:'Portfolio visitors · ' + day + ' · ' + stats.browsers + ' browsers',
+      body:['Portfolio traffic for ' + day + ' (Chennai time)', '', 'Unique browsers: ' + stats.browsers, 'Page views: ' + stats.views,
+        '', 'Browsers by estimated country (two-letter code)', ...(breakdown.length ? breakdown : ['No visits recorded.']), '',
+        'Each browser counts once per day, using its first recorded country. VPNs and blocked analytics can affect the totals.'].join('\n')});
+    const nextDay = new Date(Date.parse(day + 'T00:00:00Z') + DAY).toISOString().slice(0,10);
+    store.setProperty('nextTrafficReport', nextDay);
+    for (const id of store.getKeys()) if (id === key || id.startsWith(key + '.')) store.deleteProperty(id);
+  } finally { lock.releaseLock(); }
 }
